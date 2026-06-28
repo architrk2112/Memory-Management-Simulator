@@ -1,0 +1,73 @@
+Test Case 1: Memory Initialization
+--------------------------------------
+init memory 1024
+dump memory
+
+
+Test Case 2: First Fit Allocation
+--------------------------------------
+set allocator first_fit
+malloc 100
+malloc 200
+dump memory
+
+
+Test Case 3: Free and Coalescing
+--------------------------------------
+free 1
+free 2
+dump memory
+
+
+Test Case 4: Best Fit Allocation
+--------------------------------------
+init memory 500
+set allocator best_fit
+malloc 100
+malloc 50
+malloc 200
+
+
+Test Case 5: Worst Fit Allocation
+--------------------------------------
+init memory 500
+set allocator worst_fit
+malloc 100
+malloc 50
+
+
+Test Case 6: Allocation Failure
+--------------------------------------
+init memory 100
+malloc 80
+malloc 50
+
+
+Test Case 7: Fragmentation Statistics
+--------------------------------------
+stats
+
+
+Test Case 8: Cache Access (L1 and L2)
+--------------------------------------
+access 64
+access 64
+access 128
+stats
+
+
+Test Case 9: Invalid Free
+--------------------------------------
+free 99
+
+
+Test Case 10: Buddy Allocation and Coalescing
+--------------------------------------
+init memory 1024
+set allocator buddy
+malloc 100
+malloc 200
+dump memory
+free 1
+free 2
+dump memory
